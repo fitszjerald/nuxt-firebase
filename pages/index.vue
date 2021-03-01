@@ -11,7 +11,17 @@
           rel="noopener noreferrer"
           class="button--green"
         >
-          Documentation
+          firebase init
+        </a>
+      </div>
+
+      <div class="links">
+        <a
+          @click="nuxtFirebaseInit"
+          rel="noopener noreferrer"
+          class="button--green"
+        >
+          nuxt-firebase init
         </a>
       </div>
       
@@ -37,13 +47,32 @@ export default {
         } else {
           // Show permission request UI
           console.log('No registration token available. Request permission to generate one.');
-          // ...
         }
       }).catch((err) => {
         console.log('An error occurred while retrieving token. ', err);
-        // ...
       });
+    },
+    nuxtFirebaseInit () {
+      const messaging = firebase.messaging()
+      messaging.getToken({ vapidKey: 'BHCQsKptKxoQqVX6-MmLlupvbrJ3rW0E8sW0xlyBy_1TveAMqTs1QTJQxQfia0Db-DjO4tJgMcKRMtj53aC9pTg'})
+      .then((currentToken) => {
+        if (currentToken) {
+          console.log(currentToken)
+        }
+        else {
+          console.log('No Instance ID token available. Request permission to generate one.')
+        }
+        /** When app is active */
+        messaging.onMessage((payload) => {
+          console.log(payload)
+        }, e => {
+          console.log(e)
+        })
+      })
     }
+  },
+  mounted () {
+    this.nuxtFirebaseInit()
   }
 }
 </script>

@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import "@firebase/messaging";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAXwCYbNrkw3AhHeWTvIlJCvGr5VnY85bo",
+  apiKey: "AIzaSyAXwCYbNrkw3AhHeWTvIlJCvGr5VnY85bo",
 	authDomain: "push-notification-test-d9f80.firebaseapp.com",
 	databaseURL: "https://push-notification-test-d9f80.firebaseio.com",
 	projectId: "push-notification-test-d9f80",
@@ -13,8 +13,7 @@ const firebaseConfig = {
 }
 
 if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
- }
-console.log(firebase)
+  firebase.initializeApp(firebaseConfig);
+}
 
 export default firebase
